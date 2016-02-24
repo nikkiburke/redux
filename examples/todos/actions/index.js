@@ -14,6 +14,13 @@ export const setVisibilityFilter = (filter) => {
   }
 }
 
+export const filterByInput = (textMatch) => {
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    textMatch
+  }
+}
+
 export const toggleTodo = (id) => {
   return {
     type: 'TOGGLE_TODO',

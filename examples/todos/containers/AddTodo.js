@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { addTodo, filterByInput } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
   let input
@@ -14,6 +14,8 @@ let AddTodo = ({ dispatch }) => {
         }
         dispatch(addTodo(input.value))
         input.value = ''
+      }} onKeyUp={e => {
+        dispatch(filterByInput(input.value.trim()))
       }}>
         <input ref={node => {
           input = node

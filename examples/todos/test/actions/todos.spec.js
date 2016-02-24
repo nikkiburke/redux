@@ -10,7 +10,7 @@ describe('todo actions', () => {
     })
   })
 
-  it('setVisibilityFilter should create SET_VISIBILITY_FILTER action', () => {
+  it('setVisibilityFilter should create SET_VISIBILITY_FILTER action with filter key', () => {
     expect(actions.setVisibilityFilter('active')).toEqual({
       type: 'SET_VISIBILITY_FILTER',
       filter: 'active'
@@ -21,6 +21,23 @@ describe('todo actions', () => {
     expect(actions.toggleTodo(1)).toEqual({
       type: 'TOGGLE_TODO',
       id: 1
+    })
+  })
+
+  describe('filterByInput', () => {
+    it ('should create SET_VISIBILITY_FILTER action with textMatch key', () => {
+      const text = "hello";
+      expect(actions.filterByInput(text)).toEqual({
+        type: 'SET_VISIBILITY_FILTER',
+        textMatch: text
+      })
+    })
+
+    it('should accept an empty string', () => {
+      expect(actions.filterByInput('')).toEqual({
+        type: 'SET_VISIBILITY_FILTER',
+        textMatch: ''
+      })
     })
   })
 })
